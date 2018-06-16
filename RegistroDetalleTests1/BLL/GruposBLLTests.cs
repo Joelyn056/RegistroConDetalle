@@ -24,8 +24,8 @@ namespace RegistroDetalle.BLL.Tests
             };
 
             //Si no estan creados los grupos da error
-           grupos.Detalle.Add(new GruposDetalle(0,0,1, ));
-           grupos.Detalle.Add(new GruposDetalle(0,0,2, ));
+           grupos.Detalle.Add(new GruposDetalle());
+           grupos.Detalle.Add(new GruposDetalle());
 
             bool paso = GruposBLL.Guardar(grupos);
             Assert.AreEqual(true, paso);
@@ -35,11 +35,11 @@ namespace RegistroDetalle.BLL.Tests
         [TestMethod()]
         public void ModificarTest()
         {
-            int IdGrupos = GruposBLL.GetList(x => true)[0].GrupoId;
+            int IdGrupos = GruposBLL.GetList(x => true)[0].GrupoId; 
             Grupos grupos = GruposBLL.Buscar(IdGrupos);
 
             //Agreggar todo
-            grupos.Detalle.Add(new GruposDetalle(0, grupos.GrupoId,2,3));
+          //  grupos.Detalle.Add(new GruposDetalle(0, grupos.GrupoId,2,3));
 
             bool paso = GruposBLL.Modificar(grupos);
             Assert.AreEqual(true, paso);
